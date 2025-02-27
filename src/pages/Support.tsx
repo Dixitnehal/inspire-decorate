@@ -127,4 +127,58 @@ const Support = () => {
                   href={category.url}
                   className="bg-decor-light rounded-lg p-6 hover:shadow-md transition-all duration-300 group"
                 >
-                  <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center mb-4 shadow-sm text-decor-accent
+                  <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center mb-4 shadow-sm text-decor-accent group-hover:text-decor-primary transition-colors duration-300">
+                    {category.icon}
+                  </div>
+                  <h3 className="text-lg font-semibold text-decor-primary mb-2">
+                    {category.title}
+                  </h3>
+                  <p className="text-decor-secondary">
+                    {category.description}
+                  </p>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+        
+        {/* FAQ Section */}
+        <section className="py-16 bg-decor-light">
+          <div className="content-container">
+            <h2 className="text-2xl font-semibold text-decor-primary mb-8 text-center">
+              Frequently Asked Questions
+            </h2>
+            
+            <div className="max-w-3xl mx-auto">
+              <Accordion type="single" collapsible className="bg-white rounded-lg shadow-sm overflow-hidden">
+                {faqs.map((faq, index) => (
+                  <AccordionItem key={index} value={`item-${index}`}>
+                    <AccordionTrigger className="px-6 py-4 text-decor-primary font-medium hover:text-decor-accent transition-colors">
+                      {faq.question}
+                    </AccordionTrigger>
+                    <AccordionContent className="px-6 pb-4 text-decor-secondary">
+                      {faq.answer}
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </div>
+            
+            <div className="text-center mt-10">
+              <p className="text-decor-secondary mb-6">
+                Still have questions? Reach out to our support team.
+              </p>
+              <Button className="btn-primary">
+                Contact Support <ChevronRight className="h-4 w-4" />
+              </Button>
+            </div>
+          </div>
+        </section>
+      </main>
+      
+      <Footer />
+    </div>
+  );
+};
+
+export default Support;
