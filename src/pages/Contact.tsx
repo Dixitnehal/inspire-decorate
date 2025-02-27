@@ -84,7 +84,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <h3 className="font-medium text-decor-primary mb-1">Our Location</h3>
-                      <p className="text-decor-secondary">123 Design Street, Creative City, 45678</p>
+                      <p className="text-decor-secondary">342, Clerk Colony Rd, Clerk Colony, Indore, Madhya Pradesh 452011</p>
                     </div>
                   </div>
                   
@@ -244,11 +244,18 @@ const Contact = () => {
               Our Location
             </h2>
             <div className="bg-white rounded-xl overflow-hidden shadow-md">
-              {/* Placeholder for a map */}
-              <div className="aspect-video bg-decor-gray-light flex items-center justify-center">
-                <p className="text-decor-secondary">
-                  Interactive Map would be displayed here
-                </p>
+              <div className="aspect-video w-full">
+                <iframe 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3679.7736896861804!2d75.87051531493833!3d22.74918348610319!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396303ab5f5687ff%3A0x4451cfcea8e22f18!2s342%2C%20Clerk%20Colony%20Rd%2C%20Clerk%20Colony%2C%20Indore%2C%20Madhya%20Pradesh%20452011!5e0!3m2!1sen!2sin!4v1720352150728!5m2!1sen!2sin" 
+                  width="100%" 
+                  height="450" 
+                  style={{ border: 0 }}
+                  allowFullScreen={true} 
+                  loading="lazy" 
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="DecorMind Location"
+                  className="w-full h-full"
+                ></iframe>
               </div>
             </div>
           </div>
