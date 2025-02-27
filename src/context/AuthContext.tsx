@@ -26,7 +26,13 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const { toast } = useToast();
-  const navigate = useNavigate();
+  
+  // We can't use useNavigate directly here as it's not within a Router context
+  // Will implement navigation via the helper functions below
+  
+  const navigateTo = (path: string) => {
+    window.location.href = path;
+  };
 
   // For demo purposes, we'll simulate authentication
   const signIn = async (email: string, password: string) => {
@@ -48,7 +54,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
           description: "You have successfully signed in.",
         });
         
-        navigate("/");
+        navigateTo("/");
       } else {
         throw new Error("Invalid credentials");
       }
@@ -82,7 +88,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
           description: "Your account has been created successfully.",
         });
         
-        navigate("/");
+        navigateTo("/");
       } else {
         throw new Error("Please fill in all fields");
       }
@@ -103,7 +109,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       title: "Signed out",
       description: "You have been signed out successfully.",
     });
-    navigate("/signin");
+    navigateTo("/signin");
   };
 
   const signInWithGoogle = async () => {
@@ -124,7 +130,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         description: "You have successfully signed in with Google.",
       });
       
-      navigate("/");
+      navigateTo("/");
     } catch (error) {
       toast({
         title: "Google sign in failed",
@@ -154,7 +160,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         description: "You have successfully signed in with Facebook.",
       });
       
-      navigate("/");
+      navigateTo("/");
     } catch (error) {
       toast({
         title: "Facebook sign in failed",
